@@ -242,4 +242,17 @@ td img{width:100%;}
 }
 
 
+table {
+  width: 100%;
+  table-layout: fixed;
+}
 
+td, th {
+  width: 50%;
+  vertical-align: top;
+}
+
+.one {
+  font-size: 35px;
+  padding-bottom: 20px;
+}
