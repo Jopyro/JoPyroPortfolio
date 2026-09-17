@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>My Portfolio</title>
+<meta charset="utf-8">
+<meta name="description" content="Jordyn Pryor's Portfolio">
+<meta name="author" content="Jordyn Pryor">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="portfolio.css" rel="stylesheet">
+</head>
+<body>
+<div id="wrapper">
+  <header>
+     <h1>Touchdesigner</h1>
+</h1>
+  </header>
+  <main>
+  <nav>
+  <div id="center">
+    <a href="index.html">3D Models</a>
+    <a href="gamedesign.html">Game Design</a>
+    <a href="touchdesigner.html">TouchDesigner</a>
+  </div>
+  </nav>
+  
+   
+
+    <table>
+    <tr>
+      <th class="one">Project</th>
+      <th class="one">Concept</th>
+    </tr>
+<!-- Rat Father Images -->
+    <tr>
+      <td> 
+        <section class="container">
+          <div class="slider-wrapper">
+            <div class="slider">
+             <video controls muted class="active"><source src="Final_A_Moment_Away (1) (1) (1).mov" type="video/mp4" class="active"></video>
+
+              <img src="Moment_Photo1.png" alt="Photo One">
+                <img src="Moment_Photo_2.png" alt="Photo Two">
+
+            </div>
+            <div class="slider-nav">
+              <button class="active"></button>
+              <button></button>
+              <button></button>
+            
+            </div>
+          </div>
+        </section>
+      </td>
+      <td class="one">A Moment Away
+        <br>
+
+          <br> Tools
+<br>
+Touchdesigner
+        <p>The design is an attempt to explore celestial motion. It  feature fluid, orbiting rings, centered around a planet. I wanted to utilize negative space and focus on how to make each line feel smooth, consistent, and fluid while keeping a calm drifting atmosphere.</p>
+        <br>
+      </td>
+    </tr>
+
+
+
+    <!-- Rat Father Images -->
+    <tr>
+      <td> 
+        <section class="container">
+          <div class="slider-wrapper">
+            <div class="slider">
+          <video controls muted class="active"><source src="movieout.1 - Trim-compressed.mp4" type="video/mp4" class="active"></video>
+                         <img src="Image_One.png" alt="Crimson Maelstrom Picture One">
+
+          <img src="maelstrom3.jpg" alt="Crimson Maelstrom Picture One">
+                            <img src="maelstrom4.jpg" alt="Crimson Maelstrom Picture Two">
+
+            </div>
+            <div class="slider-nav">
+              <button class="active"></button>
+              <button></button>
+                   <button></button>
+                            <button></button>
+
+            
+            </div>
+          </div>
+        </section>
+      </td>
+      <td class="one">Crimson Maelstrom <br>
+          <br> Tools 
+      <br>
+
+Blender • Unity
+<br>
+        <p>Inspired by Jujutsu Kaisan Domain Expansion. It is an entrance portal to a domain of a monster / entity.  The blood-red swirls surround the entrance point and flow downwards into the vortex. The swirls hope to create a sense of unease, detailing that what lies at the end of the portal isn’t a pleasurable place. You are slowly drifting into the home of a monster. The black and white lines intend to break up the natural flow of the environment. It becomes less of a drift and more of an invasion. By introducing razor sharp geometry, I am trying to create a sense of hostility within the portal. Instead of a drift, there becomes an outside entity trying to force its way into the portal, causing it to become more unstable.
+The enviornment is audio with the circular rings size increasing with the beat.
+</p>
+    
+</td>
+    </tr>
+
+
+
+    </table>
+
+    <div id="location">
+      <h2>Here is where I am located!</h2>
+      <h2>Miami University<br></h2>
+      <h2>Oxford ,OH, 45056<br></h2>
+    </div> 
+    <a id="mobile" href="tel:888-555-5555"><span id="desktop">618-900-5578</span></a><br><br>
+  </main>
+</div>
+<a id="Bottom"></a>
+<footer>
+  Copyright &copy; 2026 Jordyn Pryor's Portfolio<br>
+  <a href="mailto:jordyn.a.pryor@gmail.com">jordyn.a.pryor@gmail.com</a>
+</footer>
+
+<script>
+  document.querySelectorAll('.slider-wrapper').forEach(wrapper => {
+    const mediaItems = wrapper.querySelectorAll('.slider img, .slider video');
+    const dotButtons = wrapper.querySelectorAll('.slider-nav button');
+
+    dotButtons.forEach((button, index) => {
+      button.addEventListener('click', () => {
+        mediaItems.forEach(item => item.classList.remove('active'));
+        dotButtons.forEach(btn => btn.classList.remove('active'));
+
+        mediaItems[index].classList.add('active');
+        button.classList.add('active');
+      });
+    });
+  });
+</script>
+</body>
+</html>

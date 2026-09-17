@@ -1,0 +1,311 @@
+The video is blowing up because max-height: 550px combined with standard video aspect ratios forces a massive width that breaks out of the column.
+
+To fix this across all your tabs, we need to constrain media elements specifically inside table cells (td img, td video), set proper column width percentages for your 3-column layouts, and lock video aspect ratios.
+
+Here is the complete updated CSS with the media sizing fixed for all tabs:
+
+CSS
+* { 
+  box-sizing: border-box; 
+}
+
+body { 
+  background-color: #0b0710;
+  color: #f3e8ff;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Courier New", monospace;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}  
+
+#wrapper {
+  margin: 0 auto;
+  padding: 40px 20px;
+  max-width: 1200px;
+}
+
+header { 
+  background-color: transparent;
+  color: #f472b6;
+  padding-bottom: 20px;       
+  text-align: center;
+}
+
+header a { text-decoration: none; }
+header a:link,
+header a:visited,
+header a:hover { color: #f472b6; }
+
+h1 { 
+  font-size: 2.8em;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  color: #f472b6;
+  text-shadow: 0 0 12px rgba(244, 114, 182, 0.4);
+}
+
+h2 { 
+  color: #c084fc;
+  font-size: 2em;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(192, 132, 252, 0.3);
+  padding-bottom: 8px;
+}
+
+h3, dt { color: #f472b6; }
+
+h4 { 
+  background-color: transparent;
+  font-size: 1.1em;
+  padding-bottom: 8px;
+  text-transform: uppercase;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  clear: left;  
+  color: #c084fc;
+}
+
+p {
+  color: #e9d5ff;
+  font-size: 17px;
+  line-height: 1.7;
+}
+
+nav a {
+  text-decoration: none;
+  color: #ffffff; 
+}
+nav a:link { color: #ffffff; }
+nav a:visited,
+nav a:hover { color: #f472b6; }
+
+a:link { color: #ffffff; }
+a:visited,
+a:hover { color: #f472b6; }
+
+/* Main Section Buttons */
+#center {
+  text-align: center;
+  font-size: 1.2em;
+  border-bottom: 1px solid rgba(192, 132, 252, 0.2);
+  padding-bottom: 40px;
+  margin-bottom: 40px;
+}
+
+#center a {
+  border: 1px solid #c084fc;
+  padding: 12px 28px;
+  margin: 8px;
+  display: inline-block;
+  text-decoration: none;
+  color: #f472b6;
+  background: rgba(192, 132, 252, 0.05);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-weight: 600;
+}
+
+#center a:hover {
+  background: #f472b6;
+  color: #0b0710;
+  box-shadow: 0 0 15px rgba(244, 114, 182, 0.5);
+  border-color: #f472b6;
+}
+
+.details { 
+  padding: 0 5%;
+  overflow: auto;
+}
+
+footer { 
+  background-color: #130c1e;
+  font-size: .90em;
+  font-style: italic;
+  text-align: center;
+  padding: 25px 0;
+  border-top: 1px solid #c084fc;
+  color: #c084fc;
+  margin-top: 60px;
+}
+
+/* --- SLIDER & MEDIA CONTROL --- */
+.slider-wrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slider {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Universal Media Restraints */
+td img, 
+td video, 
+.slider img, 
+.slider video {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  max-height: 380px; /* Scaled down so videos don't blow up cells */
+  object-fit: contain;
+  border-radius: 6px;
+}
+
+.slider img,
+.slider video {
+  display: none;
+  border: 1px solid rgba(192, 132, 252, 0.4);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.slider img.active,
+.slider video.active {
+  display: block;
+}
+
+/* Dots Navigation */
+.slider-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.slider-nav button {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid #c084fc;
+  background-color: transparent;
+  opacity: 0.6;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.slider-nav button:hover,
+.slider-nav button.active {
+  background-color: #f472b6;
+  border-color: #f472b6;
+  opacity: 1;
+  box-shadow: 0 0 8px rgba(244, 114, 182, 0.8);
+}
+
+/* --- MODERN CARD TABLE LAYOUT --- */
+table {
+  width: 100%;
+  table-layout: fixed; /* Strictly enforces column widths */
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid rgba(192, 132, 252, 0.25);
+  background: #130c1e;
+  border-radius: 10px;
+  margin: 30px 0;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+th {
+  background: rgba(192, 132, 252, 0.1);
+  color: #f472b6;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(192, 132, 252, 0.25);
+  border-right: 1px solid rgba(192, 132, 252, 0.15);
+  text-align: left;
+}
+
+th:last-child {
+  border-right: none;
+}
+
+td {
+  vertical-align: top;
+  border-right: 1px solid rgba(192, 132, 252, 0.15);
+  border-bottom: 1px solid rgba(192, 132, 252, 0.15);
+  padding: 20px;
+  word-wrap: break-word; /* Prevents long text from pushing media */
+}
+
+td:last-child {
+  border-right: none;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+/* Automatic Column Proportioning */
+/* 2-Column Tables (3D Models) */
+tr th:first-child:nth-last-child(2),
+tr td:first-child:nth-last-child(2) { width: 55%; }
+tr th:nth-child(2):nth-last-child(1),
+tr td:nth-child(2):nth-last-child(1) { width: 45%; }
+
+/* 3-Column Tables (Game Design / Projects) */
+tr th:first-child:nth-last-child(3),
+tr td:first-child:nth-last-child(3) { width: 45%; } /* Media Column */
+tr th:nth-child(2):nth-last-child(2),
+tr td:nth-child(2):nth-last-child(2) { width: 35%; } /* Description */
+tr th:nth-child(3):nth-last-child(1),
+tr td:nth-child(3):nth-last-child(1) { width: 20%; } /* Date */
+
+/* Typography Inside Tables */
+td strong, td b {
+  color: #f472b6;
+  font-size: 1.1em;
+}
+
+.one {
+  font-size: 16px;
+  padding-bottom: 15px;
+}
+
+/* Form Styling */
+#location { text-align: center; }
+
+button { 
+  background-color: #c084fc; 
+  color: #0b0710;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+input[type="text"],
+input[type="email"] {
+  border: none;
+  border-bottom: 2px solid #c084fc;
+  background-color: rgba(192, 132, 252, 0.1);
+  color: #ffffff;
+  padding: 8px 12px;
+  border-radius: 4px 4px 0 0;
+}
+
+#mobile { display: inline; }
+#desktop { display: none; }
+
+@media (min-width: 100px) {
+  header { padding-left: 0; }
+  nav ul { 
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+  }
+  nav ul li { border-bottom: none; }
+  #flow { display: flex; flex-direction: row; }
+  #mobile { display: none; }
+  #desktop { display: inline; }
+  .details { display: flex; flex-direction: row; }
+  h4 { margin-left: 10%; margin-right: 10%; }
+}
